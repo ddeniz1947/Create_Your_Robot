@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore , combineReducers} from 'redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import { addRobotsImgReducer,clickRobotsReducer } from './reducers';
+const rootReducer = combineReducers({addRobotsImgReducer,clickRobotsReducer});
+const store = createStore(rootReducer);
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
